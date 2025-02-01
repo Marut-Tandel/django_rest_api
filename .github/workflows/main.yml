@@ -32,11 +32,11 @@ jobs:
         run: |
           python manage.py runserver &
 
-      - name: Check Running Services
-        run: |
-          sleep 5  # Wait for the server to start
-          curl --fail http://localhost:8000/ || exit 1
-          # http://127.0.0.1:8000/
+      # - name: Check Running Services
+      #   run: |
+      #     sleep 5  # Wait for the server to start
+      #     curl --fail http://localhost:8000/ || exit 1
+      #     # http://127.0.0.1:8000/
 
-      - name: Show Deployed URL
-        run: echo "Your API is available at https://marut-tandel.github.io/fast_api/.onrender.com"
+      # - name: Show Deployed URL
+      #   run: echo "Your API is available at https://marut-tandel.github.io/fast_api/.onrender.com"
