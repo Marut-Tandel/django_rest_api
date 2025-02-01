@@ -1,0 +1,42 @@
+name: Deploy FastAPI
+
+on:
+  push:
+    branches:
+      - main
+      - master
+
+# allow only one process
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.12.7"
+
+      - name: Install Dependencies
+        run: |
+          # python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Deploy App
+        run: |
+          python manage.py runserver &
+
+      - name: Check Running Services
+        run: |
+          sleep 5  # Wait for the server to start
+          curl --fail http://localhost:8000/ || exit 1
+          # http://127.0.0.1:8000/
+
+      - name: Show Deployed URL
+        run: echo "Your API is available at https://marut-tandel.github.io/fast_api/.onrender.com"
