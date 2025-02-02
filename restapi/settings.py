@@ -26,7 +26,8 @@ SECRET_KEY = 'django-insecure-im1m^_p*-)s89zhlfyk_d1t6jh9_wd4=x-v$&98!#bveve^!1w
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    "https://django-rest-api-5120.onrender.com/"
+    "https://django-rest-api-5120.onrender.com/",
+    'django-rest-api-5120.onrender.com'
 ]
 
 
